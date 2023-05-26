@@ -1,3 +1,11 @@
 <div class="user-card">
-  <p>User Card works</p>
+  <label>{{ name }}</label> <br /><br/>
+  <span>{{ emailId }}</span> <br /> <br>
+  <span>{{ city }}</span> <br />
+  <button class="detail-btn" (click)="setUserId(id)" routerLink="user-detail">
+    DETAIL
+  </button>
+  <button class="delete-btn" >DELETE</button>
 </div>
+
+

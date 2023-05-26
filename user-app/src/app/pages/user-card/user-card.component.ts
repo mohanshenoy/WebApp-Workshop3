@@ -6,4 +6,15 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss'],
 })
-export class UserCardComponent {}
+export class UserCardComponent {
+  @Input() id: number;
+  @Input() name: string;
+  @Input() emailId: string;
+  @Input() city: string;
+
+  constructor(public userService:UserService){}
+
+  setUserId(id :number){
+    this.userService.userId = id
+  }
+}

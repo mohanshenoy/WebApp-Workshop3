@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { User, UserDetail } from '../model/common.dto';
+import { HttpClient } from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
@@ -7,17 +8,26 @@ import { User, UserDetail } from '../model/common.dto';
 export class UserService {
   baseUrl: string = 'https://jsonplaceholder.typicode.com/users';
   userId: number;
-  users: User[] = [];
+  users;
 
-  constructor() {}
+  constructor(private http:HttpClient) {}
 
   userAleadyAdded(): boolean {
     return true;
   }
 
-  getUsers(): void {}
+  getUsers() {
+    this.http.get(this.baseUrl).subscribe((res)=>{
+      console.log(res);
+      this.users = res;
+    })
+  }
 
-  getUserDetail(id: number) {}
+  getUserDetail(id: number) {
+    console.log(id);
+
+    return this.http.get(this.baseUrl + '/' + id);
+  }
 
   addUser(user: UserDetail): void {}
 

@@ -1,3 +1,14 @@
 <div class="container">
   <p>User List Works</p>
+
+  <button routerLink="/create-user">
+    Create User
+  </button>
+
+
+  <app-user-card *ngFor="let item of userService.users"
+    [id]="item.id"
+    [name]="item.username"
+    [emailId]="item.email"
+  ></app-user-card>
 </div>

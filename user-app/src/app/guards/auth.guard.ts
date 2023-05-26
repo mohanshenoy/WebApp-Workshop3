@@ -11,6 +11,6 @@ import {
 })
 export class AuthGuard implements CanActivate {
   canActivate(): boolean {
-    return true;
+    return false;
   }
 }
