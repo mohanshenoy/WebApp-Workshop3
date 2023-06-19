@@ -1,18 +1,25 @@
 import { UserService } from 'src/app/services/user.service';
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { DataLayerService } from 'src/app/services/data-layer.service';
+import { BaseComponent } from 'src/app/base/base.component';
 
 @Component({
   selector: 'app-create-user',
   templateUrl: './create-user.component.html',
   styleUrls: ['./create-user.component.scss'],
 })
-export class CreateUserComponent {
+export class CreateUserComponent  extends BaseComponent{
 
   hasError: boolean = false;
   userFormBuilder: FormGroup;
 
-  constructor(private readonly formBuilder: FormBuilder,private userService: UserService) {
+  constructor(private readonly formBuilder: FormBuilder,
+              private userService: UserService,
+              public dataLayerService : DataLayerService) {
+      
+      super(dataLayerService);
+
       this.userFormBuilder = this.formBuilder.group({
         emailId: formBuilder.control("", [Validators.required, Validators.email]),
         name: formBuilder.control("", [Validators.required]),

@@ -1,4 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Router } from '@angular/router';
+import { BaseComponent } from 'src/app/base/base.component';
+import { DataLayerService } from 'src/app/services/data-layer.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -6,7 +9,7 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-card.component.html',
   styleUrls: ['./user-card.component.scss'],
 })
-export class UserCardComponent {
+export class UserCardComponent extends BaseComponent{
   @Input() id: number;
   @Input() name: string;
   @Input() emailId: string;
@@ -14,9 +17,12 @@ export class UserCardComponent {
 
   @Output() deleteUser = new EventEmitter<Number>();
 
-  constructor(private userService: UserService) {
-    // console.log('Constructor called');
-  }
+
+  constructor(private _router: Router,
+              public userService: UserService, 
+              public dataLayerService : DataLayerService) {
+    super(dataLayerService);
+}
 
   ngOnChanges() {
     // console.log('on changes called');
@@ -32,6 +38,10 @@ export class UserCardComponent {
 
   setUserId(id: number) {
     this.userService.userId = id;
+    setTimeout( ()=> {
+      this._router.navigateByUrl('/user-detail');
+    }, 100);
+    
   }
 
   deleteUserById(id) {

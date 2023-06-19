@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "@bcodes/ngx-routerlink-delay": "^2.0.0"
+  }
+}

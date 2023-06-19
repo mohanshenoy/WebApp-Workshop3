@@ -2,8 +2,8 @@
   <label>{{ name }}</label> <br /><br/>
   <span>{{ emailId }}</span> <br /> <br>
   <span>{{ city }}</span> <br />
-  <button class="detail-btn" routerLink="user-detail" (click)="setUserId(id)">
+  <button  id='et_display_user_detail_{{id}}' class="detail-btn" (click)="setUserId(id)">
     DETAIL
-  </button>
-  <button class="delete-btn" (click)="deleteUserById(id)">DELETE</button>
+</button>
+  <button id="et_deleteuser_{{id}}" class="delete-btn" (click)="deleteUserById(id)">DELETE</button>
 </div>

@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
+import { BaseComponent } from 'src/app/base/base.component';
 import { UserDetail } from 'src/app/model/common.dto';
+import { DataLayerService } from 'src/app/services/data-layer.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -7,7 +9,8 @@ import { UserService } from 'src/app/services/user.service';
   templateUrl: './user-detail.component.html',
   styleUrls: ['./user-detail.component.scss'],
 })
-export class UserDetailComponent {
+export class UserDetailComponent  extends BaseComponent {
+
   userDetail: UserDetail = {
     id: this.userService.userId,
     name: '',
@@ -21,7 +24,10 @@ export class UserDetailComponent {
 
   hasError: boolean = false;
 
-  constructor(private userService: UserService) {}
+  constructor(public userService: UserService, 
+    public dataLayerService : DataLayerService) {
+      super(dataLayerService);
+  }
 
   ngOnInit() {
     this.hasError = false;

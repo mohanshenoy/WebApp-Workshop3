@@ -12,6 +12,9 @@ import { ContactComponent } from './pages/static/contact/contact.component';
 import { UserListComponent } from './pages/user-list/user-list.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { LogInterceptor } from './interceptors/log.interceptor';
+import { WindowReferenceService } from './services/window-reference.service';
+import { DataLayerService } from './services/data-layer.service';
+import { BaseComponent } from './base/base.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +26,7 @@ import { LogInterceptor } from './interceptors/log.interceptor';
     AboutUsComponent,
     ContactComponent,
     UserListComponent,
+    BaseComponent,
   ],
   imports: [
     BrowserModule,
@@ -32,6 +36,8 @@ import { LogInterceptor } from './interceptors/log.interceptor';
     ReactiveFormsModule,
   ],
   providers: [
+    DataLayerService,
+    WindowReferenceService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LogInterceptor,

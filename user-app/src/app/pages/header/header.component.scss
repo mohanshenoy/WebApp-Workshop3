@@ -10,10 +10,11 @@
   cursor: pointer;
 }
 
-.menu > label {
+.menu > a {
   margin-left: 25px;
   font-size: 16px;
   font-weight: 700;
   cursor: pointer;
   color: rgb(65, 166, 212);
+  text-decoration:none;
 }
